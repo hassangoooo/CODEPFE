@@ -1,101 +1,165 @@
--- Database: restaurant_db
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : jeu. 24 avr. 2025 à 13:35
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
--- Table Client
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-CREATE TABLE Client (
-    id_client INT AUTO_INCREMENT PRIMARY KEY,
-    nom_client VARCHAR(50),
-    prenom VARCHAR(50),
-    email VARCHAR(100) UNIQUE,
-    mot_de_passe VARCHAR(255),
-    adress_Client VARCHAR(255),
-    num_Client VARCHAR(20),
-    ville_id INT,
-    FOREIGN KEY (ville_id) REFERENCES villes_france_free(ville_id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Table Cuisinières
-CREATE TABLE Cuisinieres (
-    Id_Cuisinieres INT AUTO_INCREMENT PRIMARY KEY,
-    email_cuisinieres VARCHAR(100) UNIQUE,
-    nom_cuisinieres VARCHAR(50),
-    prenom_cuisinieres VARCHAR(50),
-    mot_de_passe VARCHAR(255),
-    num_de_telephone VARCHAR(20),
-    image_de_cuisinieres VARCHAR(255),
-    ville_cuisinieres VARCHAR(100),
-    ville_id INT,
-    FOREIGN KEY (ville_id) REFERENCES  villes_france_free(ville_id) ON DELETE CASCADE
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
--- Table Produit
-CREATE TABLE plats (
-    id_plats INT AUTO_INCREMENT PRIMARY KEY,
-    prix_plat DECIMAL(10,2),
-    nom_plat VARCHAR(100),
-    type_plat VARCHAR(255),
-    Id_Cuisinieres INT,
-    FOREIGN KEY (Id_Cuisinieres) REFERENCES Cuisinieres(Id_Cuisinieres) ON DELETE CASCADE
-);
+--
+-- Base de données : `restaurant_db`
+--
 
--- Table Commande
-CREATE TABLE commande (
-    id_commande INT AUTO_INCREMENT PRIMARY KEY,
-    id_client INT,
-    id_plats INT,
-    quantite_commande INT,
-    date_commande DATE,
-    date_livraison DATE,
-    FOREIGN KEY (id_client) REFERENCES Client(id_client) ON DELETE CASCADE,
-    FOREIGN KEY (id_plats) REFERENCES plats(id_plats) ON DELETE CASCADE
-);
+-- --------------------------------------------------------
 
--- Table Image
-CREATE TABLE image (
-    id_image INT AUTO_INCREMENT PRIMARY KEY,
-    image VARCHAR(255),
-    description_image TEXT,
-    id_plats INT,
-    FOREIGN KEY (id_plats) REFERENCES plats(id_plats) ON DELETE CASCADE
-);
+--
+-- Structure de la table `client`
+--
 
--- Table Type_Cuisine
-CREATE TABLE type_cuisine (
-    Id_type_cuisine INT AUTO_INCREMENT PRIMARY KEY,
-    nom_de_cuisine VARCHAR(100)
-);
+CREATE TABLE `client` (
+  `id_client` int(11) NOT NULL,
+  `nom_client` varchar(50) DEFAULT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `mot_de_passe` varchar(255) DEFAULT NULL,
+  `adress_Client` varchar(255) DEFAULT NULL,
+  `num_Client` varchar(20) DEFAULT NULL,
+  `ville_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Table Recouvre (relation entre Cuisinières et Type_Cuisine)
-CREATE TABLE recouvre (
-    Id_Cuisinieres INT,
-    Id_type_cuisine INT,
-    PRIMARY KEY (Id_Cuisinieres, Id_type_cuisine),
-    FOREIGN KEY (Id_Cuisinieres) REFERENCES Cuisinieres(Id_Cuisinieres) ON DELETE CASCADE,
-    FOREIGN KEY (Id_type_cuisine) REFERENCES type_cuisine(Id_type_cuisine) ON DELETE CASCADE
-);
+--
+-- Déchargement des données de la table `client`
 
--- Table Ingrédient
-CREATE TABLE ingredient (
-    id_ingredient INT AUTO_INCREMENT PRIMARY KEY,
-    nom_ingredient VARCHAR(100)
-);
 
--- Table Compose (relation entre Produit et Ingrédient)
-CREATE TABLE compose (
-    id_plats INT,
-    id_ingredient INT,
-    PRIMARY KEY (id_plats, id_ingredient),
-    FOREIGN KEY (id_plats) REFERENCES plats(id_plats) ON DELETE CASCADE,
-    FOREIGN KEY (id_ingredient) REFERENCES ingredient(id_ingredient) ON DELETE CASCADE
-);
+--
+-- Structure de la table `commande`
+--
 
+CREATE TABLE `commande` (
+  `id_commande` int(11) NOT NULL,
+  `id_client` int(11) DEFAULT NULL,
+  `id_produit` int(11) DEFAULT NULL,
+  `quantite_commande` int(11) DEFAULT NULL,
+  `date_commande` date DEFAULT NULL,
+  `date_livraison` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `compose`
+--
+
+CREATE TABLE `compose` (
+  `id_plat` int(11) NOT NULL,
+  `id_ingredient` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cuisinieres`
+--
+
+CREATE TABLE `cuisinieres` (
+  `Id_Cuisinieres` int(11) NOT NULL,
+  `email_cuisinieres` varchar(100) DEFAULT NULL,
+  `nom_cuisinieres` varchar(50) DEFAULT NULL,
+  `prenom_cuisinieres` varchar(50) DEFAULT NULL,
+  `mot_de_passe` varchar(255) DEFAULT NULL,
+  `num_de_telephone` varchar(20) DEFAULT NULL,
+  `image_de_cuisinieres` varchar(255) DEFAULT NULL,
+  `ville_id` int(11) DEFAULT NULL,
+  `description` varchar(528) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `cuisinieres`
+--
+
+
+
+--
+-- Structure de la table `image`
+--
+
+CREATE TABLE `image` (
+  `id_image` INT AUTO_INCREMENT PRIMARY KEY,,
+  `image` varchar(255) DEFAULT NULL,
+  `description_image` text DEFAULT NULL,
+  `Id_plat` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ingredient`
+--
+
+CREATE TABLE `ingredient` (
+  `id_ingredient` int(11) INT AUTO_INCREMENT PRIMARY KEY,
+  `nom_ingredient` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `plats`
+--
+
+CREATE TABLE `plats` (
+  `Id_plat`  INT AUTO_INCREMENT PRIMARY KEY,
+  `prix_plat` int(255) DEFAULT NULL,
+  `nom_plat` varchar(255) DEFAULT NULL,
+  `Id_Cuisinieres` int(11) DEFAULT NULL,
+  `type_plat` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `recouvre`
+--
+
+CREATE TABLE `recouvre` (
+  `Id_Cuisinieres` int(11) NOT NULL,
+  `Id_type_cuisine` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type_cuisine`
+--
+
+CREATE TABLE `type_cuisine` (
+  `Id_type_cuisine` int(11) NOT NULL,
+  `nom_de_cuisine` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `villes_france_free`
+--
 
 CREATE TABLE `villes_france_free` (
-  `ville_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `ville_id` mediumint(8) UNSIGNED NOT NULL,
   `ville_departement` varchar(3) DEFAULT NULL,
   `ville_nom` varchar(45) DEFAULT NULL,
   `ville_code_postal` varchar(255) DEFAULT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Déchargement des données de la table `villes_france_free`
@@ -36992,5 +37056,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-

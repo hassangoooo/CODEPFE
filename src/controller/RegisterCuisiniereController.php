@@ -15,7 +15,7 @@ class RegisterCuisiniereController
             }
     
             $photo = $_FILES['photo']['name'];
-            $uploadDir = 'uploads/profil/';
+            $uploadDir = 'images/profil/';
             $photoPath = $uploadDir . $photo;
     
             // Vérifiez si le dossier existe, sinon créez-le

@@ -17,57 +17,57 @@ Commandez facilement et régalez-vous sans passer des heures en cuisine. Nos cui
     <div class="carousel">
         <div class="carousel-container">
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image1.jpeg" alt="Image 1">
+                <img src="/CODEPFE/src/images/image1.jpeg" alt="Image 1">
                 
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image2.jpg" alt="Image 2">
+                <img src="/CODEPFE/src/images/image2.jpg" alt="Image 2">
                
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image3.jpg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image3.jpg" alt="Image 3">
                 
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image4.jpg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image4.jpg" alt="Image 3">
                
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image5.jpg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image5.jpg" alt="Image 3">
                 
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image6.jpeg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image6.jpeg" alt="Image 3">
                 
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image7.jpg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image7.jpg" alt="Image 3">
                 
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image8.jpeg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image8.jpeg" alt="Image 3">
                 
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image9.jpeg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image9.jpeg" alt="Image 3">
                
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image10.jpeg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image10.jpeg" alt="Image 3">
                 
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image11.jpeg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image11.jpeg" alt="Image 3">
                 
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image12.jpeg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image12.jpeg" alt="Image 3">
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image13.jpeg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image13.jpeg" alt="Image 3">
             </div>
             <div class="carousel-slide">
-                <img src="/codestage/src/images/image14.jpeg" alt="Image 3">
+                <img src="/CODEPFE/src/images/image14.jpeg" alt="Image 3">
             </div>
         </div>
         <button class="nav-button prev">&#10094;</button>

@@ -13,14 +13,14 @@ class LoginCuisiniereController
     public function get()
     {
        
-        require_once("/../view/LoginCuisinieres.php");
+        require_once("./view/LoginCuisinieres.php");
     }
 
     
     public function post()
     {
         session_start();
-        $error = null;
+       
     
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['login_email'];
@@ -34,7 +34,7 @@ class LoginCuisiniereController
                 header("Location: index.php?route=profilCuisiniere");
                 exit();
             } else {
-                $error = "Email ou mot de passe incorrect.";
+                echo "Email ou mot de passe incorrect.";
             }
         }
     

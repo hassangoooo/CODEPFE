@@ -15,6 +15,11 @@ error_reporting(E_ALL);
             $controller = new HomeController(); 
             $controller->get();
             break;
+        case 'notremenu':
+            require_once("./controller/Notremenu.php");
+            $controller = new NotremenuController();
+            $controller->get();
+            break;
         case 'loginClient':
             require_once("./controller/LoginClientController.php");
             $controller = new LoginClientController();
@@ -71,17 +76,28 @@ error_reporting(E_ALL);
                 $controller->profil();
                 break;
                 
-                case 'logoutCuisiniere':
+            case 'logoutCuisiniere':
                     require_once("./controller/LogoutCuisiniereController.php");
                     $controller = new LogoutCuisiniereController();
                     $controller->post();
                     break;
                   
-                case 'ajouterPlat':
-            require_once("./controller/PlatController.php");
+            case 'ajouterPlat':
+                require_once("./controller/PlatController.php");
                     $controller = new PlatController();
                     $controller->post();
                     break;
+            case 'getPublishedPlats':
+                        require_once("./controller/PlatController.php");
+                        $controller = new PlatController();
+                        $controller->getPublishedPlats();
+                        break; 
+            case 'getallCuisinieres':
+                        require_once("./controller/PlatController.php");
+                        $controller = new PlatController();
+                        $controller->getAllCuisinieres();
+                        break;
+            
 
         default:
             require_once("./controller/HomeController.php");

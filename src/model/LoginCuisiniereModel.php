@@ -30,4 +30,10 @@ public function loginCuisiniere($email, $password)
     }
     return false; // Retourne false si l'authentification échoue
 }
+public function getCuisiniereById($id) {
+    $stmt = $this->db->prepare("SELECT * FROM Cuisinieres WHERE Id_Cuisinieres = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 }

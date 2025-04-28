@@ -4,6 +4,7 @@ class CuisinieresController {
         
     }
     function get() {
-        include("./view/LoginCuisiniers.php");
+        include("./view/LoginCuisinieres.php");
+       
     }
 }
