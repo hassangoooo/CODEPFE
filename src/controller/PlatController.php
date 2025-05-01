@@ -48,11 +48,6 @@ echo "ID de la cuisinière : " . $cuisiniereId;
             $uploadDir = 'images/plats/';
             $imagePath = $uploadDir . $image;
 
-            // Créez le dossier s'il n'existe pas
-            if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
-            }
-
             // Déplacez l'image téléchargée
             if (!move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
                 echo "Impossible de déplacer l'image téléchargée.";

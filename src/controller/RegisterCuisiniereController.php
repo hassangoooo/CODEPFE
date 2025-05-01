@@ -52,8 +52,9 @@ class RegisterCuisiniereController
     
             // Enregistrer la cuisinière
             $registerCuisiniereModel->registerCuisiniere($nom, $prenom, $email, $password, $telephone, $villeId, $photoPath, $description);
-    
-            echo json_encode(array("status" => "success", "message" => "Cuisinière enregistrée avec succès."));
+            
+            header("Location: index.php?route=loginCuisiniere"); // Rediriger vers la page de connexion après l'enregistrement
+            echo "<script>alert('Cuisinière enregistrée avec succès.');</script>";
         } catch (Exception $e) {
             echo json_encode(array("status" => "error", "message" => $e->getMessage()));
         }

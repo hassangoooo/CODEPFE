@@ -34,8 +34,8 @@ if (session_status() === PHP_SESSION_NONE) {
                   les cuisines 
                 </a>
                 <ul class="dropdown-menu">
-                  <li id="cuisinemarocaine"><a class="dropdown-item" href="index.php?route=notremenu">marocainne</a></li>
-                  <li id="cuisineukrainienne"><a class="dropdown-item" href="#">ukrainniene</a></li>
+                  
+                  <li id="cuisineukrainienne"><a class="dropdown-item" href="index.php?route=notremenu">ukrainniene</a></li>
                 </ul>
               </li>
           <li class="nav-item dropdown">
@@ -66,15 +66,23 @@ if (session_status() === PHP_SESSION_NONE) {
           <button class="btn btn-outline-danger" type="submit">Search</button>
         </form>
        
-            <div class="btn-group">
-                <button id="btnlogin" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Connexion
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="index.php?route=loginClient">CLIENT</a></li>
-                    <li><a class="dropdown-item" href="index.php?route=loginCuisiniere">CUISINIERES</a></li>
-                </ul>
-            </div>
+        <div class="btn-group">
+    <?php if (isset($_SESSION['cuisiniere_id'])): ?>
+        <!-- Bouton Déconnexion si la cuisinière est connectée -->
+        <button id="btndisconnect" type="button" class="btn btn-danger">
+            <a href="index.php?route=logoutCuisiniere" style="color: white; text-decoration: none;">Déconnexion</a>
+        </button>
+    <?php else: ?>
+        <!-- Bouton Connexion si personne n'est connecté -->
+        <button id="btnlogin" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Connexion
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="index.php?route=loginClient">CLIENT</a></li>
+            <li><a class="dropdown-item" href="index.php?route=loginCuisiniere">CUISINIÈRES</a></li>
+        </ul>
+    <?php endif; ?>
+</div>
         
         <div class="cart-icon" id="Panier">🛒<span id="cart-count">0</span></div>
       </div>

@@ -1,4 +1,4 @@
-const panier =document.getElementById("cart-count");
+const Panier =document.getElementById("cart-count");
 const fermer = document.getElementById("close");
 
 
@@ -6,7 +6,7 @@ function toggleCart() {
     const cartContainer = document.getElementById('cart-container');
     cartContainer.classList.toggle('active');
 }
-panier.addEventListener('click', toggleCart);
+Panier.addEventListener('click', toggleCart);
 fermer.addEventListener('click',toggleCart);
 
 
@@ -47,4 +47,3 @@ prevButton.addEventListener('click', () => {
     index = (index - 1 + slides.length) % slides.length;
     updateCarousel();
 });
-

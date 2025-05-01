@@ -1,13 +1,16 @@
 <?php
 require_once("./model/CuisiniereModel.php");
+require_once("./model/PlatModel.php");
 
 class ProCuisiniereController
 {
     private $cuisiniereModel;
+    private $platModel;
 
     public function __construct()
     {
         $this->cuisiniereModel = new CuisiniereModel();
+        $this->platModel = new PlatModel();
     }
 
     /**
@@ -33,6 +36,20 @@ class ProCuisiniereController
         }
     
         require_once("./view/Profile.php");
-        require_once("./css/style.css");
+        
+    }
+    
+    
+    public function voirProfilCuisiniere($id)
+    {
+        $cuisiniere = $this->cuisiniereModel->getCuisiniereById($id);
+        $plats = $this->platModel->getPlatsByCuisiniereId($id);
+    
+        if (!$cuisiniere) {
+            echo "Cuisinière introuvable.";
+            exit();
+        }
+    
+        require_once __DIR__ . '/../view/voirProfilCuisiniere.php';
     }
 }

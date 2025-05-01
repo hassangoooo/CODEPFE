@@ -97,6 +97,15 @@ error_reporting(E_ALL);
                         $controller = new PlatController();
                         $controller->getAllCuisinieres();
                         break;
+            case 'voirProfilCuisiniere':
+                require_once("./controller/ProCuisiniereController.php");
+                $controller = new ProCuisiniereController();
+                if (isset($_GET['id'])) {
+                    $controller->voirProfilCuisiniere($_GET['id']);
+                } else {
+                    echo "ID de la cuisinière non spécifié.";
+                }
+                break;
             
 
         default:
